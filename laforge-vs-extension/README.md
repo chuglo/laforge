@@ -1,6 +1,8 @@
 # laforge-support README
 
-This is the README for your extension "laforge-support". After writing up a brief description, we recommend including the following sections.
+Current features:
+- Check for missing commas in "Included hosts" arrays
+- Check that laforge files referenced in env.laforge actually exist in the workspace.
 
 ## Install your extension
 
