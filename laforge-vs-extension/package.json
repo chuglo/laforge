@@ -1,25 +1,64 @@
 {
     "name": "laforge",
     "displayName": "LaForge Support",
-    "description": "Syntax highlighting and autocompletion for LaForge",
-    "version": "0.0.1",
+    "description": "Syntax highlighting, autocompletion and linting for LaForge",
+    "version": "0.0.2",
+    "publisher": "CPTC",
     "engines": {
-        "vscode": "^1.68.0"
+        "vscode": "^1.80.0"
     },
     "categories": [
-        "Programming Languages"
+        "Programming Languages",
+        "Linters"
+    ],
+    "main": "./dist/client/extension.js",
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint . --ext .ts,.js",
+        "test": "node ./out/test/runTest.js",
+        "build": "webpack"
+    },
+    "devDependencies": {
+        "@types/node": "^16.11.7",
+        "@types/vscode": "^1.78.0",
+        "eslint": "^7.32.0",
+        "ts-loader": "^9.5.2",
+        "typescript": "^4.9.5",
+        "vscode-test": "^1.5.0",
+        "webpack": "^5.97.1",
+        "webpack-cli": "^6.0.1"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^8.0.0",
+        "vscode-languageserver": "^9.0.1",
+        "vscode-languageserver-textdocument": "^1.0.12"
+    },
+    "activationEvents": [
+        "onLanguage:laforge"
     ],
     "contributes": {
-        "languages": [{
-            "id": "laforge",
-            "aliases": ["laforge", "LaForge"],
-            "extensions": [".laforge"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "laforge",
-            "scopeName": "source.laforge",
-            "path": "./syntaxes/laforge.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "laforge",
+                "aliases": [
+                    "laforge",
+                    "LaForge"
+                ],
+                "extensions": [
+                    ".laforge"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "laforge",
+                "scopeName": "source.laforge",
+                "path": "./syntaxes/laforge.tmLanguage.json"
+            }
+        ]
     }
 }
