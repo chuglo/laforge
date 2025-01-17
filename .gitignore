@@ -33,3 +33,7 @@ conf.dev.json
 # Docker dev and prod
 docker-compose.dev.yml
 docker-compose.prod.yml
+
+# VS Code Extension
+laforge-vs-extension/dist
+laforge-vs-extension/node_modules
